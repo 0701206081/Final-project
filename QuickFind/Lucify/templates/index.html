@@ -1,0 +1,428 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+
+<main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+        {% for h in hero %}
+      <img src="{{h.image.url}}" alt="" data-aos="fade-in">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2 data-aos="fade-up" data-aos-delay="100">{{h.title}}</h2>
+            <p data-aos="fade-up" data-aos-delay="200">{{h.desc}}</p>
+            <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+              <a href="#about" class="btn-get-started">{{h.btn_link}}</a>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+    </section><!-- /Hero Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 40
+                },
+                "480": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 60
+                },
+                "640": {
+                  "slidesPerView": 4,
+                  "spaceBetween": 80
+                },
+                "992": {
+                  "slidesPerView": 6,
+                  "spaceBetween": 120
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="{%static 'img/clients/client-1.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{%static 'img/clients/client-2.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{%static 'img/clients/client-3.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{%static 'img/clients/client-4.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{%static 'img/clients/client-5.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{%static 'img/clients/client-6.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{%static 'img/clients/client-7.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{%static 'img/clients/client-8.png' %}" class="img-fluid" alt=""></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Clients Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section section-bg dark-background">
+
+      <div class="container position-relative">
+
+        <div class="row gy-5">
+
+            {% for a in about %}
+          <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
+            <h3>{{a.title}}</h3>
+            <p>
+              {{a.desc}}
+            </p>
+            <a href="#" class="about-btn align-self-center align-self-xl-start"><span>{{a.link}}</span> <i class="bi bi-chevron-right"></i></a>
+          </div>
+          {% endfor %}
+
+          <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
+
+                {% for f in feature %}
+              <div class="col-md-6 icon-box position-relative">
+                <i class="{{f.icon}}"></i>
+                <h4><a href="" class="stretched-link">{{f.title}}</a></h4>
+                <p>{{f.desc}}</p>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+   
+    <!-- Tabs Section -->
+    <section id="tabs" class="tabs section">
+
+      <div class="container">
+
+        <ul class="nav nav-tabs row  d-flex" data-aos="fade-up" data-aos-delay="100">
+          <!-- <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tabs-tab-1">
+              <i class="bi bi-binoculars"></i>
+              <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
+            </a> -->
+          </li>
+          {% for d in deliver %}
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tabs-tab-2">
+              <i class="{{d.icon}}"></i>
+              <h4 class="d-none d-lg-block">{{d.name}}</h4>
+            </a>
+          </li>
+          {% endfor %}
+         
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+            {% for s in section %}
+          <div class="tab-pane fade active show" id="tabs-tab-1">
+            <div class="row">
+              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                <h3>{{s.title}}</h3>
+                <p class="fst-italic">
+                  {{s.desc}}
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i>
+                    <spab>{{s.feature1}}</spab>
+                  </li>
+                  <li><i class="bi bi-check2-all"></i> <span>{{s.feature2}}</span>.</li>
+                  <li><i class="bi bi-check2-all"></i> <span>{{s.feature3}}</span></li>
+                </ul>
+                <p>
+                    {{s.more}}
+                </p>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{{s.img.url}}" alt="" class="img-fluid">
+              </div>
+            </div>
+            {% endfor %}
+          </div><!-- End Tab Content Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Tabs Section -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section section-bg dark-background">
+
+      <!-- Section Title -->
+       {% if service %}
+      <div class="container section-title" data-aos="fade-up">
+        <h2>{{service.title}}</h2>
+        <p>{{service.desc}}</p>
+      </div>
+      {% endif %}
+      <!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+            {% for s in servicesection %}
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex position-relative h-100">
+                <i class="{{s.icon}}"></i>
+              <div>
+                <h4 class="title"><a href="#" class="stretched-link">{{s.title}}</a></h4>
+                <p class="description">{{s.desc}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+           
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Portfolio</h2>
+        <p>"Essential elements that ensure success derive from overcoming challenges and embracing collaboration with integrity.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">retail</li>
+            <li data-filter=".filter-product">beauty</li>
+            <li data-filter=".filter-branding">food</li>
+            <li data-filter=".filter-books">Restuarant</li>
+          </ul><!-- End Portfolio Filters -->
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            {% for item in portfolio_items %}
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="portfolio-content h-100">
+                <img src="{{ item.image.url }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>{{ item.title }}</h4>
+                  <p>{{ item.description }}</p>
+                  <a href="{{ item.image.url }}" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- End Portfolio Item -->
+
+           
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+
+  <!-- Faq Section -->
+<section id="faq" class="faq section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Frequently Asked Questions</h2>
+      <p>Find answers to some of the most common questions about our services and business practices.</p>
+    </div><!-- End Section Title -->
+  
+    <div class="container">
+  
+      <div class="row justify-content-center">
+  
+        <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+  
+          <div class="faq-container">
+  
+            <div class="faq-item faq-active">
+              <h3>What types of products/services do you offer?</h3>
+              <div class="faq-content">
+                <p>We specialize in providing high-quality [insert products/services, e.g., organic groceries, home repairs, or digital marketing] tailored to the needs of our community. Visit our services page for a full list.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+  
+            <div class="faq-item">
+              <h3>Where are you located?</h3>
+              <div class="faq-content">
+                <p>Our store/office is located at [insert address]. You can also find us on Google Maps by searching for [business name].</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+  
+            <div class="faq-item">
+              <h3>What are your operating hours?</h3>
+              <div class="faq-content">
+                <p>We are open from [insert opening hours, e.g., Monday to Saturday, 8:00 AM - 6:00 PM]. We are closed on public holidays unless stated otherwise on our social media pages.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+  
+            <div class="faq-item">
+              <h3>Do you offer delivery or pickup services?</h3>
+              <div class="faq-content">
+                <p>Yes, we offer [delivery/pickup/both]. You can place an order online or call us at [insert phone number] for assistance. Delivery charges and areas covered can be found on our website.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+  
+            <div class="faq-item">
+              <h3>What payment methods do you accept?</h3>
+              <div class="faq-content">
+                <p>We accept [cash, mobile money, credit/debit cards, etc.]. For online purchases, we use secure payment gateways to ensure your transactions are safe.</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+  
+            <div class="faq-item">
+              <h3>How can I contact you for further inquiries?</h3>
+              <div class="faq-content">
+                <p>You can reach us through [insert phone number], email us at [insert email address], or visit our contact page for more details. We are always happy to assist!</p>
+              </div>
+              <i class="faq-toggle bi bi-chevron-right"></i>
+            </div><!-- End Faq item-->
+  
+          </div>
+  
+        </div><!-- End Faq Column-->
+  
+      </div>
+  
+    </div>
+  
+  </section><!-- /Faq Section -->
+  
+
+
+    <!-- Team Section -->
+   
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>If you have any questions or need assistance, please don't hesitate to reach out. We're here to help!</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 ">
+            <div class="row gy-4">
+
+              <div class="col-lg-12">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bi bi-geo-alt"></i>
+                  <h3>Address</h3>
+                  <p>Nchiru</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="col-md-6">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bi bi-telephone"></i>
+                  <h3>Call Us</h3>
+                  <p>+254 711 846 096</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="col-md-6">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bi bi-envelope"></i>
+                  <h3>Email Us</h3>
+                  <p>lizzvall@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <form action="#" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
+              {% csrf_token %}
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                </div>
+
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Send Message</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  {% endblock %}

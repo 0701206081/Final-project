@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Business Directory</title>
+</head>
+<body>
+    <h1>Business Directory</h1>
+    <form method="get">
+        <input type="text" name="q" placeholder="Search businesses">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for business in businesses %}
+            <li>
+                <a href="{% url 'Lucify:business_detail' business.id %}/">{{ business.name }}</a>
+                ({{ business.location }})
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
